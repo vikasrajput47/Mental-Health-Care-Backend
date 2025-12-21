@@ -8,7 +8,12 @@ dotenv.config();
 
 const app = express();
 app.use(express.json());
-
+app.get('/', async (req, res) => {
+  res.send({
+    status: 200,
+    message:"Welcome to the Mental HealthCare App"
+  })
+})
 app.use("/api/auth", authRoutes);
 app.use("/api/journals", journalRoutes);
 app.use('/api/profiles',userRoutes)
