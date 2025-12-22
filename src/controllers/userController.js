@@ -16,6 +16,22 @@ export const getTherapistList = async (req, res) => {
     });
   }
 };
+export const getProfile = async (req, res) => {
+  try {
+    const profile = await userService.getProfile(req.user.id);
+    console.log("user is",req.user.id)
+    res.status(200).json({
+      success: true,
+    
+      data: profile,
+    });
+  } catch (error) {
+    res.status(500).json({
+      success: false,
+      message: "Server Error: Could not retrieve therapists",
+    });
+  }
+};
 
 
 export const updateProfile = async (req, res) => {

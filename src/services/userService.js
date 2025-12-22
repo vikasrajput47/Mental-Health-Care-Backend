@@ -9,6 +9,13 @@ const getAllTherapists = async () => {
 
   return therapists;
 };
+const getProfile = async (userId) => {
+  // Finds all users where role is exactly "THERAPIST"
+  // Excludes passwords and sensitive internal data
+  const profile = await User.find({_id:userId})
+
+  return profile;
+};
 
 
  const updateProfileData = async (userId, updateFields) => {
@@ -48,4 +55,4 @@ const getAllTherapists = async () => {
 
   return updatedUser;
 };
-export default { getAllTherapists,updateProfileData };
+export default { getAllTherapists,updateProfileData,getProfile };
