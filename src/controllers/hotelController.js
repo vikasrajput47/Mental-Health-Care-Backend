@@ -8,6 +8,14 @@ export const getHotels = async (req, res) => {
     res.status(500).json({ success: false, message: error.message });
   }
 };
+export const getSingleHotel = async (req, res) => {
+  try {
+    const hotel = await hotelService.findSingleHotel(req.params.id);
+    res.status(200).json({ success: true, data: hotel });
+  } catch (error) {
+    res.status(500).json({ success: false, message: error.message });
+  }
+};
 
 export const postHotel = async (req, res) => {
   try {

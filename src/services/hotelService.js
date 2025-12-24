@@ -2,6 +2,9 @@ import Hotel from "../models/hotel.js";
 export const findAllHotels = async () => {
   return await Hotel.find().sort({ createdAt: -1 });
 };
+export const findSingleHotel = async (id) => {
+  return await Hotel.findById(id)
+};
 
 export const createHotel = async (hotelData, imageUrl) => {
   const hotel = new Hotel({

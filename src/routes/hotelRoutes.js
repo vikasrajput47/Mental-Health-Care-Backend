@@ -4,12 +4,14 @@ import {
   postHotel,
   putHotel,
   removeHotel,
+  getSingleHotel
 } from "../controllers/hotelController.js";
 import { upload } from "../utils/cloudinary.js";
 import { authMiddleware } from "../middleware/auth.middleware.js";
 const router = express.Router();
 router.use(authMiddleware())
 router.get("/get", getHotels);
+router.get("/get/:id",getSingleHotel)
 router.post("/add", upload.single("image"), postHotel);
 router.put("/:id", upload.single("image"), putHotel);
 router.delete("/:id", removeHotel);
