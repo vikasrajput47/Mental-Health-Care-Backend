@@ -22,7 +22,8 @@ const BookingSchema = new mongoose.Schema({
     enum: ["pending", "confirmed", "cancelled"],
     default: "confirmed",
   },
-
+  adult: { type: Number },
+  child:{type:Number},
   bookingReference: {
     type: String,
     unique: true,

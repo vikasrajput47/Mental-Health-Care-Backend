@@ -12,7 +12,7 @@ const HotelSchema = new mongoose.Schema({
   totalRooms: { type: Number, default: 1 },
   roomsBooked: { type: Number, default: 0 },
   isAvailable: { type: Boolean, default: true },
-
+  capacity:{type:Number,dafault:5},
   // Metadata
   rating: { type: Number, default: 5 },
   createdAt: { type: Date, default: Date.now },
