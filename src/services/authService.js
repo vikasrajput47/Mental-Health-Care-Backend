@@ -25,8 +25,10 @@ export const registerUser = async ({name, email, phone, password, role }) => {
 export const loginUser = async ({ email, password }) => {
   const user = await User.findOne({ email });
   if (!user) throw new Error("Invalid credentials");
-
-  const isMatch =  bcrypt.compare(password, user.passwordHash);
+  if (!password) {
+    throw new Erro("Missing Password")
+  }
+  const isMatch = await bcrypt.compare(password, user.passwordHash);
   if (!isMatch) throw new Error("Invalid credentials");
 
   const token = jwt.sign(
